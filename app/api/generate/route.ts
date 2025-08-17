@@ -9,12 +9,12 @@ export async function POST(request: NextRequest) {
     }
 
     const apiKey = process.env.HUGGINGFACE_API_KEY
-    console.log("[v0] Hugging Face API Key exists:", !!apiKey)
-    console.log("[v0] API Key length:", apiKey?.length || 0)
+    console.log("Hugging Face API Key exists:", !!apiKey)
+    console.log("API Key length:", apiKey?.length || 0)
 
     if (!apiKey) {
       return NextResponse.json(
-        { error: "Hugging Face API key not configured. Please add HUGGINGFACE_API_KEY to your environment variables." },
+        { error: "Hugging Face API key not configured." },
         { status: 500 },
       )
     }
@@ -32,8 +32,8 @@ export async function POST(request: NextRequest) {
     const modelId = "stabilityai/stable-diffusion-xl-base-1.0"
     const endpoint = `https://api-inference.huggingface.co/models/${modelId}`
 
-    console.log("[v0] Making request to Hugging Face API...")
-    console.log("[v0] Using endpoint:", endpoint)
+    console.log("Making request to Hugging Face API...")
+    console.log("Using endpoint:", endpoint)
 
     const response = await fetch(endpoint, {
       method: "POST",
@@ -44,11 +44,11 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(requestBody),
     })
 
-    console.log("[v0] API Response status:", response.status)
+    console.log("API Response status:", response.status)
 
     if (!response.ok) {
       const errorText = await response.text()
-      console.error("[v0] Hugging Face API error:", errorText)
+      console.error("Hugging Face API error:", errorText)
 
       let errorData
       try {
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
       }
 
       if (response.status === 401) {
-        console.log("[v0] Authentication failed - check API key")
+        console.log("Authentication failed - check API key")
         return NextResponse.json(
           {
             error: "Invalid API key. Please check your HUGGINGFACE_API_KEY environment variable.",
@@ -92,14 +92,14 @@ export async function POST(request: NextRequest) {
     const base64 = Buffer.from(arrayBuffer).toString("base64")
     const dataUrl = `data:${imageBlob.type};base64,${base64}`
 
-    console.log("[v0] Successfully generated image")
+    console.log("Successfully generated image")
     return NextResponse.json({
       success: true,
       image: dataUrl,
       prompt: prompt,
     })
   } catch (error) {
-    console.error("[v0] API route error:", error)
+    console.error("API route error:", error)
     return NextResponse.json({ error: "Internal server error. Please try again." }, { status: 500 })
   }
 }

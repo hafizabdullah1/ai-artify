@@ -122,6 +122,13 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Mobile-specific base styles */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
 }
 
 @layer utilities {
@@ -130,5 +137,64 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  
+  /* Mobile-specific utilities */
+  .mobile-text-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .mobile-text-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .mobile-text-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .mobile-text-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .mobile-text-xl {
+    @apply text-xl sm:text-2xl;
+  }
+  
+  .mobile-p-3 {
+    @apply p-3 sm:p-4;
+  }
+  
+  .mobile-p-4 {
+    @apply p-4 sm:p-6;
+  }
+  
+  .mobile-py-4 {
+    @apply py-4 sm:py-6;
+  }
+  
+  .mobile-py-6 {
+    @apply py-6 sm:py-8;
+  }
+  
+  .mobile-gap-4 {
+    @apply gap-4 sm:gap-6;
+  }
+  
+  .mobile-gap-6 {
+    @apply gap-6 sm:gap-8;
+  }
+  
+  /* Touch-friendly button sizes for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  /* Mobile-optimized spacing */
+  .mobile-container {
+    @apply px-4 sm:px-6;
+  }
+  
+  .mobile-margin {
+    @apply mx-4 sm:mx-6;
   }
 }
