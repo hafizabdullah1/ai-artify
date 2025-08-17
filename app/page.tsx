@@ -195,7 +195,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-4 sm:py-6">
+        <div className="container mx-auto sm:px-20 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
@@ -433,6 +433,28 @@ export default function Home() {
       
       {/* Toast Notifications */}
       <Toaster />
+      
+      {/* Footer */}
+      <footer className="border-t border-border bg-card mt-16">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-center">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-primary" />
+              <span className="text-sm text-muted-foreground">
+                Made with ❤️ by{" "}
+                <a
+                  href="https://github.com/hafizabdullah1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80 transition-colors font-medium cursor-pointer"
+                >
+                  Hafiz Abdullah
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
